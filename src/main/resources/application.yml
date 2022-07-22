@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+feign:
+  client:
+    config:
+      meusFuncionariosClient:
+        loggerLevel: full
+
+logging:
+  level:
+    org.springframework.web.client: DEBUG
+    br.com.zup.edu.funcionariosclient.cliente.FuncionariosClient: DEBUG
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          funcionarios:
+            authorization-grant-type: client_credentials
+            client-id: gestao-funcionarios-client
+            client-secret: c34k6LMaeSBEySK5xt0Wp6IUjmZVvaYg
+            scope: funcionarios:read
+        provider:
+          funcionarios:
+            token-uri: http://localhost:18080/realms/gestao-funcionarios/protocol/openid-connect/token
